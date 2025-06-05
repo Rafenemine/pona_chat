@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./pona_chat.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <style>
+        html {
+           height: 100%;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .content {
+            flex: 1;
+        }
+        header {
+            width: 100%;
+            background: white;
+        }
+        footer {
+            border-color: black;
+            border-width: black;
+            border-style: solid;
+            width: 100%;
+            background: white;
+        }
+        .your_says{
+            background-color: #ccdd33;
+        }
+        .bot_says{
+            background-color: white;
+        }
+        p{
+            padding: 10px;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+        textarea{
+            resize: none;
+            width: 300px;
+        }
+    </style>
+    <title>Pona Chat</title>
+</head>
+<body>
+    <script>
+    function back_answer(hand_id, histories_id){
+        const hand = document.getElementById(hand_id);
+        const histories = document.getElementById(histories_id);
+        
+        const your_says = document.createElement('p');
+        your_says.textContent = hand.value;
+        your_says.className = "your_says";
+        histories.appendChild(your_says);
+
+        const bot_says = document.createElement('p');
+        bot_says.textContent = "　" + qas[max_cosine_similarity_index(dic, idf, qas, hand.value)].a;
+        bot_says.className = "bot_says";
+        histories.appendChild(bot_says);
+    }
+    </script>
+
+    <div class="content">
+        <div id="histories">
+        </div>
+    </div>
+
+    <footer>
+        <textarea id="hand">what is your name</textarea>
+        <input type="button" value="o toki" onclick="back_answer('hand', 'histories')">
+    </footer>
+    
+</body>
+</html>
