@@ -104,7 +104,7 @@ window.onload = function(){
                 skipEmptyLinrs: true,
             });
             dictest = results.data;
-            //console.log("parsed csv data:", dictest[0].a);
+            console.log("parsed csv data:", dictest[0].a);
         })
         .catch(error => {
             console.error('error loading csv', error);
